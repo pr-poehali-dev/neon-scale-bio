@@ -24,15 +24,6 @@ const skulls = [
   { top: '92%', left: '30%',  size: 50,  opacity: 0.09, rotate: 22,  duration: '9.5s',delay: '2.2s'  },
 ];
 
-const bloodDrops = [
-  { left: '8px',  duration: '4.5s', delay: '0s',   height: '220px', start: '0px'  },
-  { left: '18px', duration: '6s',   delay: '1.5s', height: '310px', start: '0px'  },
-  { left: '30px', duration: '5s',   delay: '0.8s', height: '180px', start: '0px'  },
-  { left: '44px', duration: '7s',   delay: '2.2s', height: '270px', start: '0px'  },
-  { left: '58px', duration: '4s',   delay: '3.5s', height: '150px', start: '0px'  },
-  { left: '68px', duration: '5.5s', delay: '1s',   height: '330px', start: '0px'  },
-];
-
 const c = {
   red:    '#ff0033',
   dim:    'rgba(255,0,51,0.4)',
