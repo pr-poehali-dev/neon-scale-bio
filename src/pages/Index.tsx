@@ -50,9 +50,10 @@ const Index = () => {
         </div>
       ))}
 
-      {/* Ambient glow blobs */}
-      <div className="fixed top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(0,245,255,0.06) 0%, transparent 70%)', filter: 'blur(40px)', zIndex: 2 }} />
-      <div className="fixed bottom-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(191,0,255,0.06) 0%, transparent 70%)', filter: 'blur(40px)', zIndex: 2 }} />
+      {/* Ambient glow blobs — кровавые */}
+      <div className="fixed top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(180,0,30,0.1) 0%, transparent 70%)', filter: 'blur(60px)', zIndex: 2 }} />
+      <div className="fixed bottom-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(100,0,60,0.08) 0%, transparent 70%)', filter: 'blur(60px)', zIndex: 2 }} />
+      <div className="fixed top-1/2 left-1/2 w-64 h-64 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(150,0,20,0.06) 0%, transparent 70%)', filter: 'blur(50px)', zIndex: 2, transform: 'translate(-50%,-50%)' }} />
 
       <div className="relative w-full max-w-lg text-center" style={{ zIndex: 10 }}>
 
@@ -62,9 +63,9 @@ const Index = () => {
             fontFamily: 'Orbitron, monospace',
             fontSize: '0.6rem',
             letterSpacing: '0.4em',
-            color: 'var(--neon-cyan)',
+            color: 'var(--neon-red)',
             textTransform: 'uppercase',
-            opacity: 0.7
+            opacity: 0.6
           }}>
             // personal.bio
           </span>
@@ -134,7 +135,7 @@ const Index = () => {
             fontFamily: 'Orbitron, monospace',
             fontSize: '0.5rem',
             letterSpacing: '0.3em',
-            color: 'var(--neon-cyan)',
+            color: 'var(--neon-red)',
           }}>
             ◆ EST. 2024 ◆
           </span>
