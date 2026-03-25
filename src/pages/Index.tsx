@@ -1,18 +1,18 @@
 const SKULL_URL = "https://cdn.poehali.dev/files/b9ba4833-7d23-4739-8157-f8274cda22d0.jpg";
 
 const skulls = [
-  { top: '5%',  left: '3%',   size: 80,  opacity: 0.12, rotate: -15 },
-  { top: '12%', left: '82%',  size: 60,  opacity: 0.09, rotate: 20  },
-  { top: '28%', left: '91%',  size: 100, opacity: 0.07, rotate: -8  },
-  { top: '55%', left: '88%',  size: 70,  opacity: 0.11, rotate: 35  },
-  { top: '75%', left: '78%',  size: 55,  opacity: 0.08, rotate: -25 },
-  { top: '85%', left: '55%',  size: 90,  opacity: 0.06, rotate: 10  },
-  { top: '80%', left: '8%',   size: 75,  opacity: 0.10, rotate: -40 },
-  { top: '60%', left: '2%',   size: 55,  opacity: 0.08, rotate: 18  },
-  { top: '40%', left: '5%',   size: 65,  opacity: 0.07, rotate: -5  },
-  { top: '18%', left: '18%',  size: 45,  opacity: 0.06, rotate: 30  },
-  { top: '3%',  left: '55%',  size: 85,  opacity: 0.08, rotate: -12 },
-  { top: '92%', left: '30%',  size: 50,  opacity: 0.09, rotate: 22  },
+  { top: '5%',  left: '3%',   size: 80,  opacity: 0.12, rotate: -15, duration: '6s',  delay: '0s'    },
+  { top: '12%', left: '82%',  size: 60,  opacity: 0.09, rotate: 20,  duration: '8s',  delay: '1.2s'  },
+  { top: '28%', left: '91%',  size: 100, opacity: 0.07, rotate: -8,  duration: '7s',  delay: '0.5s'  },
+  { top: '55%', left: '88%',  size: 70,  opacity: 0.11, rotate: 35,  duration: '9s',  delay: '2s'    },
+  { top: '75%', left: '78%',  size: 55,  opacity: 0.08, rotate: -25, duration: '5.5s',delay: '0.8s'  },
+  { top: '85%', left: '55%',  size: 90,  opacity: 0.06, rotate: 10,  duration: '10s', delay: '3s'    },
+  { top: '80%', left: '8%',   size: 75,  opacity: 0.10, rotate: -40, duration: '7.5s',delay: '1.5s'  },
+  { top: '60%', left: '2%',   size: 55,  opacity: 0.08, rotate: 18,  duration: '6.5s',delay: '2.5s'  },
+  { top: '40%', left: '5%',   size: 65,  opacity: 0.07, rotate: -5,  duration: '8.5s',delay: '0.3s'  },
+  { top: '18%', left: '18%',  size: 45,  opacity: 0.06, rotate: 30,  duration: '11s', delay: '1.8s'  },
+  { top: '3%',  left: '55%',  size: 85,  opacity: 0.08, rotate: -12, duration: '7s',  delay: '4s'    },
+  { top: '92%', left: '30%',  size: 50,  opacity: 0.09, rotate: 22,  duration: '9.5s',delay: '2.2s'  },
 ];
 
 const Index = () => {
@@ -23,16 +23,18 @@ const Index = () => {
       {skulls.map((s, i) => (
         <div
           key={i}
-          className="fixed pointer-events-none"
+          className="fixed pointer-events-none skull-float"
           style={{
             top: s.top,
             left: s.left,
             width: s.size,
             height: s.size,
-            opacity: s.opacity,
-            transform: `rotate(${s.rotate}deg)`,
             zIndex: 1,
-          }}
+            '--skull-opacity': s.opacity,
+            '--skull-rotate': `${s.rotate}deg`,
+            '--skull-duration': s.duration,
+            animationDelay: s.delay,
+          } as React.CSSProperties}
         >
           <img
             src={SKULL_URL}

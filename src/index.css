@@ -194,6 +194,23 @@
   box-shadow: 0 0 8px var(--neon-cyan);
 }
 
+/* Skull pulse animation */
+@keyframes skullPulse {
+  0%,
+  100% {
+    opacity: var(--skull-opacity);
+    transform: rotate(var(--skull-rotate)) scale(1);
+  }
+  50% {
+    opacity: calc(var(--skull-opacity) * 2.2);
+    transform: rotate(var(--skull-rotate)) scale(1.08);
+  }
+}
+
+.skull-float {
+  animation: skullPulse var(--skull-duration) ease-in-out infinite;
+}
+
 /* Corner decorations */
 .corner-tl,
 .corner-tr,
