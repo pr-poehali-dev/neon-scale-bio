@@ -1,12 +1,58 @@
+const SKULL_URL = "https://cdn.poehali.dev/files/b9ba4833-7d23-4739-8157-f8274cda22d0.jpg";
+
+const skulls = [
+  { top: '5%',  left: '3%',   size: 80,  opacity: 0.12, rotate: -15 },
+  { top: '12%', left: '82%',  size: 60,  opacity: 0.09, rotate: 20  },
+  { top: '28%', left: '91%',  size: 100, opacity: 0.07, rotate: -8  },
+  { top: '55%', left: '88%',  size: 70,  opacity: 0.11, rotate: 35  },
+  { top: '75%', left: '78%',  size: 55,  opacity: 0.08, rotate: -25 },
+  { top: '85%', left: '55%',  size: 90,  opacity: 0.06, rotate: 10  },
+  { top: '80%', left: '8%',   size: 75,  opacity: 0.10, rotate: -40 },
+  { top: '60%', left: '2%',   size: 55,  opacity: 0.08, rotate: 18  },
+  { top: '40%', left: '5%',   size: 65,  opacity: 0.07, rotate: -5  },
+  { top: '18%', left: '18%',  size: 45,  opacity: 0.06, rotate: 30  },
+  { top: '3%',  left: '55%',  size: 85,  opacity: 0.08, rotate: -12 },
+  { top: '92%', left: '30%',  size: 50,  opacity: 0.09, rotate: 22  },
+];
+
 const Index = () => {
   return (
     <div className="min-h-screen neon-grid scanlines relative flex items-center justify-center px-4" style={{ backgroundColor: 'var(--bg-dark)' }}>
 
-      {/* Ambient glow blobs */}
-      <div className="fixed top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(0,245,255,0.06) 0%, transparent 70%)', filter: 'blur(40px)' }} />
-      <div className="fixed bottom-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(191,0,255,0.06) 0%, transparent 70%)', filter: 'blur(40px)' }} />
+      {/* Skull background */}
+      {skulls.map((s, i) => (
+        <div
+          key={i}
+          className="fixed pointer-events-none"
+          style={{
+            top: s.top,
+            left: s.left,
+            width: s.size,
+            height: s.size,
+            opacity: s.opacity,
+            transform: `rotate(${s.rotate}deg)`,
+            zIndex: 1,
+          }}
+        >
+          <img
+            src={SKULL_URL}
+            alt=""
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              borderRadius: '4px',
+              filter: 'contrast(1.4) brightness(0.9)',
+            }}
+          />
+        </div>
+      ))}
 
-      <div className="relative z-10 w-full max-w-lg text-center">
+      {/* Ambient glow blobs */}
+      <div className="fixed top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(0,245,255,0.06) 0%, transparent 70%)', filter: 'blur(40px)', zIndex: 2 }} />
+      <div className="fixed bottom-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(191,0,255,0.06) 0%, transparent 70%)', filter: 'blur(40px)', zIndex: 2 }} />
+
+      <div className="relative w-full max-w-lg text-center" style={{ zIndex: 10 }}>
 
         {/* Top tag */}
         <div className="fade-in-1 mb-6">
