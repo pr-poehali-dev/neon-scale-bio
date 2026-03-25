@@ -56,6 +56,21 @@ const Index = () => {
 
       <div className="relative w-full text-left fade-in-1" style={{ zIndex: 10, maxWidth: '640px', fontFamily: "'Courier New', Courier, monospace" }}>
 
+        {/* Большая надпись MY BIO */}
+        <h1
+          className="neon-title"
+          style={{
+            fontSize: 'clamp(3rem, 12vw, 7rem)',
+            fontWeight: 900,
+            letterSpacing: '0.15em',
+            lineHeight: 1,
+            marginBottom: '24px',
+            fontFamily: "'Orbitron', monospace",
+          }}
+        >
+          MY BIO
+        </h1>
+
         {/* Заголовок файла */}
         <div style={{ color: c.comment, fontSize: '0.75rem', marginBottom: '6px', letterSpacing: '0.05em' }}>
           {'// profile.json — last modified: 2024'}
