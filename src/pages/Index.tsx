@@ -9,6 +9,20 @@ const bloodDrops = [
   { left: '68px', start: '-15px', len: '110px', duration: '3.5s', delay: '1.8s'  },
 ];
 
+const bgBlood = [
+  { left: '8%',   len: '150px', duration: '5.5s', delay: '0.3s'  },
+  { left: '16%',  len: '220px', duration: '7s',   delay: '1.8s'  },
+  { left: '23%',  len: '130px', duration: '4.8s', delay: '0s'    },
+  { left: '34%',  len: '280px', duration: '8s',   delay: '2.5s'  },
+  { left: '42%',  len: '170px', duration: '6s',   delay: '0.9s'  },
+  { left: '50%',  len: '100px', duration: '4.2s', delay: '3.8s'  },
+  { left: '58%',  len: '240px', duration: '7.5s', delay: '1.1s'  },
+  { left: '66%',  len: '190px', duration: '5.2s', delay: '2.9s'  },
+  { left: '74%',  len: '310px', duration: '9s',   delay: '0.5s'  },
+  { left: '82%',  len: '160px', duration: '6.3s', delay: '4.2s'  },
+  { left: '90%',  len: '120px', duration: '4.5s', delay: '1.6s'  },
+];
+
 const skulls = [
   { top: '5%',  left: '3%',   size: 80,  opacity: 0.12, rotate: -15, duration: '6s',  delay: '0s'    },
   { top: '12%', left: '82%',  size: 60,  opacity: 0.09, rotate: 20,  duration: '8s',  delay: '1.2s'  },
@@ -38,6 +52,19 @@ const c = {
 const Index = () => {
   return (
     <div className="min-h-screen neon-grid scanlines relative flex items-center justify-center px-4" style={{ backgroundColor: 'var(--bg-dark)' }}>
+
+      {/* Фоновая кровь — под черепами */}
+      <div className="blood-bg">
+        {bgBlood.map((d, i) => (
+          <div key={i} className="blood-drop" style={{
+            left: d.left,
+            '--drop-duration': d.duration,
+            '--drop-delay': d.delay,
+            '--drop-len': d.len,
+            '--drop-start': '0px',
+          } as React.CSSProperties} />
+        ))}
+      </div>
 
       {skulls.map((s, i) => (
         <div
