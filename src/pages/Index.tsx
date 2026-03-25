@@ -58,14 +58,16 @@ const Index = () => {
 
         {/* Большая надпись MY BIO */}
         <h1
-          className="neon-title"
           style={{
             fontSize: 'clamp(3rem, 12vw, 7rem)',
             fontWeight: 900,
-            letterSpacing: '0.15em',
+            letterSpacing: '0.2em',
             lineHeight: 1,
             marginBottom: '24px',
             fontFamily: "'Orbitron', monospace",
+            color: 'rgba(160, 40, 40, 0.75)',
+            textShadow: '0 0 40px rgba(120,0,20,0.3)',
+            textTransform: 'uppercase',
           }}
         >
           MY BIO
