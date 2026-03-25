@@ -1,5 +1,14 @@
 const SKULL_URL = "https://cdn.poehali.dev/files/b9ba4833-7d23-4739-8157-f8274cda22d0.jpg";
 
+const bloodDrops = [
+  { left: '6px',  start: '-20px', len: '180px', duration: '4.2s', delay: '0s'    },
+  { left: '18px', start: '-40px', len: '260px', duration: '5.8s', delay: '1.3s'  },
+  { left: '30px', start: '-10px', len: '140px', duration: '3.9s', delay: '0.7s'  },
+  { left: '44px', start: '-60px', len: '320px', duration: '6.5s', delay: '2.1s'  },
+  { left: '56px', start: '-30px', len: '200px', duration: '4.8s', delay: '3.4s'  },
+  { left: '68px', start: '-15px', len: '110px', duration: '3.5s', delay: '1.8s'  },
+];
+
 const skulls = [
   { top: '5%',  left: '3%',   size: 80,  opacity: 0.12, rotate: -15, duration: '6s',  delay: '0s'    },
   { top: '12%', left: '82%',  size: 60,  opacity: 0.09, rotate: 20,  duration: '8s',  delay: '1.2s'  },
@@ -13,6 +22,15 @@ const skulls = [
   { top: '18%', left: '18%',  size: 45,  opacity: 0.06, rotate: 30,  duration: '11s', delay: '1.8s'  },
   { top: '3%',  left: '55%',  size: 85,  opacity: 0.08, rotate: -12, duration: '7s',  delay: '4s'    },
   { top: '92%', left: '30%',  size: 50,  opacity: 0.09, rotate: 22,  duration: '9.5s',delay: '2.2s'  },
+];
+
+const bloodDrops = [
+  { left: '8px',  duration: '4.5s', delay: '0s',   height: '220px', start: '0px'  },
+  { left: '18px', duration: '6s',   delay: '1.5s', height: '310px', start: '0px'  },
+  { left: '30px', duration: '5s',   delay: '0.8s', height: '180px', start: '0px'  },
+  { left: '44px', duration: '7s',   delay: '2.2s', height: '270px', start: '0px'  },
+  { left: '58px', duration: '4s',   delay: '3.5s', height: '150px', start: '0px'  },
+  { left: '68px', duration: '5.5s', delay: '1s',   height: '330px', start: '0px'  },
 ];
 
 const c = {
@@ -49,6 +67,32 @@ const Index = () => {
           <img src={SKULL_URL} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px', filter: 'contrast(1.4) brightness(0.9)' }} />
         </div>
       ))}
+
+      {/* Кровь — левая сторона */}
+      <div className="blood-left">
+        {bloodDrops.map((d, i) => (
+          <div key={i} className="blood-drop" style={{
+            left: d.left,
+            '--drip-duration': d.duration,
+            '--drip-delay': d.delay,
+            '--drip-height': d.height,
+            '--drip-start': d.start,
+          } as React.CSSProperties} />
+        ))}
+      </div>
+
+      {/* Кровь — правая сторона */}
+      <div className="blood-right">
+        {bloodDrops.map((d, i) => (
+          <div key={i} className="blood-drop" style={{
+            left: d.left,
+            '--drip-duration': d.duration,
+            '--drip-delay': `calc(${d.delay} + 0.7s)`,
+            '--drip-height': d.height,
+            '--drip-start': d.start,
+          } as React.CSSProperties} />
+        ))}
+      </div>
 
       <div className="fixed top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(180,0,30,0.1) 0%, transparent 70%)', filter: 'blur(60px)', zIndex: 2 }} />
       <div className="fixed bottom-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(100,0,60,0.08) 0%, transparent 70%)', filter: 'blur(60px)', zIndex: 2 }} />

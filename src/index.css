@@ -96,6 +96,58 @@
   }
 }
 
+/* Кровь по бокам */
+.blood-left,
+.blood-right {
+  position: fixed;
+  top: 0;
+  width: 80px;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+.blood-left {
+  left: 0;
+}
+.blood-right {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.blood-drop {
+  position: absolute;
+  top: 0;
+  width: 6px;
+  border-radius: 0 0 50% 50%;
+  background: linear-gradient(to bottom, #8b0000, #cc0018, #660010);
+  box-shadow: 0 0 6px rgba(150, 0, 20, 0.6);
+  animation: bloodDrip var(--drop-duration) ease-in var(--drop-delay) infinite;
+  transform-origin: top center;
+}
+
+@keyframes bloodDrip {
+  0% {
+    height: 0;
+    top: var(--drop-start);
+    opacity: 0.9;
+  }
+  40% {
+    height: var(--drop-len);
+    opacity: 1;
+  }
+  80% {
+    height: var(--drop-len);
+    top: calc(var(--drop-start) + 30px);
+    opacity: 0.8;
+  }
+  100% {
+    height: var(--drop-len);
+    top: calc(var(--drop-start) + 60px);
+    opacity: 0;
+  }
+}
+
 /* Глитч-эффект при наведении на имя */
 .neon-title:hover {
   animation:
@@ -256,6 +308,66 @@
   box-shadow:
     0 0 10px var(--neon-blood),
     0 0 25px rgba(180, 0, 30, 0.3);
+}
+
+/* Кровь по бокам */
+.blood-left,
+.blood-right {
+  position: fixed;
+  top: 0;
+  width: 80px;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 3;
+}
+.blood-left {
+  left: 0;
+}
+.blood-right {
+  right: 0;
+}
+
+.blood-drop {
+  position: absolute;
+  top: 0;
+  width: 5px;
+  border-radius: 0 0 50% 50%;
+  background: linear-gradient(to bottom, #6b0000, #aa000f, #550000);
+  box-shadow: 0 0 8px rgba(180, 0, 20, 0.5);
+  animation: bloodDrip var(--drip-duration) ease-in var(--drip-delay) infinite;
+}
+
+.blood-drop::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: #aa000f;
+  box-shadow: 0 0 8px rgba(180, 0, 20, 0.7);
+}
+
+@keyframes bloodDrip {
+  0% {
+    height: 0px;
+    opacity: 0;
+    top: var(--drip-start);
+  }
+  8% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.8;
+    height: var(--drip-height);
+  }
+  100% {
+    opacity: 0;
+    height: var(--drip-height);
+    top: var(--drip-start);
+  }
 }
 
 /* Пульс черепов */
