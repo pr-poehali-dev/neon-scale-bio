@@ -55,29 +55,29 @@ const Index = () => {
             color: 'rgba(224, 247, 250, 0.75)',
             lineHeight: 1.8,
           }}>
-            Привет! Меня зовут <span style={{ color: 'var(--neon-cyan)', fontWeight: 600 }}>Scale</span>.
-            Здесь можно найти мои социальные сети и узнать немного обо мне.
-            Добавляй в друзья — всегда рад новым знакомствам.
+            Пострадавший игрок.
           </p>
         </div>
 
         {/* Social buttons */}
         <div className="fade-in-3 flex gap-4 justify-center flex-wrap">
           <a
-            href="#"
+            href="https://steamcommunity.com/profiles/76561199172822318/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-steam rounded-sm px-7 py-3 flex items-center gap-3 cursor-pointer no-underline"
           >
             <span style={{ fontSize: '1.1rem' }}>🎮</span>
             <span>Steam</span>
           </a>
 
-          <a
-            href="#"
-            className="btn-discord rounded-sm px-7 py-3 flex items-center gap-3 cursor-pointer no-underline"
+          <div
+            className="btn-discord rounded-sm px-7 py-3 flex items-center gap-3"
+            style={{ cursor: 'default' }}
           >
             <span style={{ fontSize: '1.1rem' }}>💬</span>
-            <span>Discord</span>
-          </a>
+            <span>fizercloud</span>
+          </div>
         </div>
 
         {/* Bottom tag */}
