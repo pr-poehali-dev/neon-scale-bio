@@ -15,11 +15,21 @@ const skulls = [
   { top: '92%', left: '30%',  size: 50,  opacity: 0.09, rotate: 22,  duration: '9.5s',delay: '2.2s'  },
 ];
 
+const c = {
+  red:    '#ff0033',
+  dim:    'rgba(255,0,51,0.4)',
+  gray:   'rgba(180,140,140,0.5)',
+  white:  'rgba(220,200,200,0.85)',
+  string: '#ce9178',
+  key:    '#9cdcfe',
+  num:    '#b5cea8',
+  comment:'rgba(255,0,51,0.35)',
+};
+
 const Index = () => {
   return (
     <div className="min-h-screen neon-grid scanlines relative flex items-center justify-center px-4" style={{ backgroundColor: 'var(--bg-dark)' }}>
 
-      {/* Skull background */}
       {skulls.map((s, i) => (
         <div
           key={i}
@@ -36,111 +46,96 @@ const Index = () => {
             animationDelay: s.delay,
           } as React.CSSProperties}
         >
-          <img
-            src={SKULL_URL}
-            alt=""
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              borderRadius: '4px',
-              filter: 'contrast(1.4) brightness(0.9)',
-            }}
-          />
+          <img src={SKULL_URL} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px', filter: 'contrast(1.4) brightness(0.9)' }} />
         </div>
       ))}
 
-      {/* Ambient glow blobs — кровавые */}
       <div className="fixed top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(180,0,30,0.1) 0%, transparent 70%)', filter: 'blur(60px)', zIndex: 2 }} />
       <div className="fixed bottom-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(100,0,60,0.08) 0%, transparent 70%)', filter: 'blur(60px)', zIndex: 2 }} />
       <div className="fixed top-1/2 left-1/2 w-64 h-64 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(150,0,20,0.06) 0%, transparent 70%)', filter: 'blur(50px)', zIndex: 2, transform: 'translate(-50%,-50%)' }} />
 
-      <div className="relative w-full max-w-lg text-center" style={{ zIndex: 10 }}>
+      <div className="relative w-full text-left fade-in-1" style={{ zIndex: 10, maxWidth: '640px', fontFamily: "'Courier New', Courier, monospace" }}>
 
-        {/* Top tag */}
-        <div className="fade-in-1 mb-6">
-          <span style={{
-            fontFamily: 'Orbitron, monospace',
-            fontSize: '0.6rem',
-            letterSpacing: '0.4em',
-            color: 'var(--neon-red)',
-            textTransform: 'uppercase',
-            opacity: 0.6
-          }}>
-            // personal.bio
-          </span>
+        {/* Заголовок файла */}
+        <div style={{ color: c.comment, fontSize: '0.75rem', marginBottom: '6px', letterSpacing: '0.05em' }}>
+          {'// profile.json — last modified: 2024'}
         </div>
 
-        {/* Main name */}
-        <div className="fade-in-1 mb-8">
-          <h1
-            className="neon-title"
-            style={{
-              fontSize: 'clamp(4rem, 15vw, 9rem)',
-              fontWeight: 900,
-              letterSpacing: '0.12em',
-              lineHeight: 1,
-            }}
-          >
-            SCALE
-          </h1>
-        </div>
+        {/* Большая табличка в стиле кода */}
+        <div className="neon-card relative" style={{ padding: '32px 36px', border: '1px solid rgba(255,0,51,0.2)', borderRadius: '2px' }}>
+          <div className="corner-tl" /><div className="corner-tr" />
+          <div className="corner-bl" /><div className="corner-br" />
 
-        {/* Divider */}
-        <div className="fade-in-2 neon-divider mb-8" />
+          {/* Строка 1 */}
+          <div style={{ color: c.dim, fontSize: '0.8rem', marginBottom: '18px' }}>{'{'}</div>
 
-        {/* Bio card */}
-        <div className="fade-in-2 neon-card rounded-sm p-6 mb-8 relative">
-          <div className="corner-tl" />
-          <div className="corner-tr" />
-          <div className="corner-bl" />
-          <div className="corner-br" />
-
-          <p style={{
-            fontFamily: 'Rajdhani, sans-serif',
-            fontSize: '1.05rem',
-            fontWeight: 400,
-            letterSpacing: '0.05em',
-            color: 'rgba(224, 247, 250, 0.75)',
-            lineHeight: 1.8,
-          }}>
-            Пострадавший игрок.
-          </p>
-        </div>
-
-        {/* Social buttons */}
-        <div className="fade-in-3 flex gap-4 justify-center flex-wrap">
-          <a
-            href="https://steamcommunity.com/profiles/76561199172822318/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-steam rounded-sm px-7 py-3 flex items-center gap-3 cursor-pointer no-underline"
-          >
-            <span style={{ fontSize: '1.1rem' }}>🎮</span>
-            <span>Steam</span>
-          </a>
-
-          <div
-            className="btn-discord rounded-sm px-7 py-3 flex items-center gap-3"
-            style={{ cursor: 'default' }}
-          >
-            <span style={{ fontSize: '1.1rem' }}>💬</span>
-            <span>fizercloud</span>
+          {/* name */}
+          <div style={{ marginBottom: '10px', paddingLeft: '24px', fontSize: '0.95rem', lineHeight: 1.6 }}>
+            <span style={{ color: c.key }}>"name"</span>
+            <span style={{ color: c.gray }}>: </span>
+            <span style={{ color: c.string }}>"Scale"</span>
+            <span style={{ color: c.gray }}>,</span>
           </div>
+
+          {/* status */}
+          <div style={{ marginBottom: '10px', paddingLeft: '24px', fontSize: '0.95rem', lineHeight: 1.6 }}>
+            <span style={{ color: c.key }}>"status"</span>
+            <span style={{ color: c.gray }}>: </span>
+            <span style={{ color: c.string }}>"Пострадавший игрок"</span>
+            <span style={{ color: c.gray }}>,</span>
+          </div>
+
+          {/* contacts */}
+          <div style={{ marginBottom: '6px', paddingLeft: '24px', fontSize: '0.95rem', lineHeight: 1.6 }}>
+            <span style={{ color: c.key }}>"contacts"</span>
+            <span style={{ color: c.gray }}>: {'{'}</span>
+          </div>
+
+          {/* steam */}
+          <div style={{ marginBottom: '8px', paddingLeft: '48px', fontSize: '0.95rem', lineHeight: 1.6 }}>
+            <span style={{ color: c.key }}>"steam"</span>
+            <span style={{ color: c.gray }}>: </span>
+            <a
+              href="https://steamcommunity.com/profiles/76561199172822318/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: c.string,
+                textDecoration: 'none',
+                transition: 'all 0.2s',
+                borderBottom: '1px solid rgba(255,0,51,0.3)',
+              }}
+              onMouseEnter={e => {
+                (e.target as HTMLElement).style.color = '#fff';
+                (e.target as HTMLElement).style.textShadow = '0 0 10px #ff0033';
+              }}
+              onMouseLeave={e => {
+                (e.target as HTMLElement).style.color = c.string;
+                (e.target as HTMLElement).style.textShadow = 'none';
+              }}
+            >
+              "steamcommunity.com/profiles/76561199172822318"
+            </a>
+            <span style={{ color: c.gray }}>,</span>
+          </div>
+
+          {/* discord */}
+          <div style={{ marginBottom: '10px', paddingLeft: '48px', fontSize: '0.95rem', lineHeight: 1.6 }}>
+            <span style={{ color: c.key }}>"discord"</span>
+            <span style={{ color: c.gray }}>: </span>
+            <span style={{ color: c.string }}>"fizercloud"</span>
+          </div>
+
+          <div style={{ paddingLeft: '24px', color: c.dim, fontSize: '0.95rem', marginBottom: '18px' }}>{'}'}<span style={{ color: c.gray }}>,</span></div>
+
+          {/* Строка закрытия */}
+          <div style={{ color: c.dim, fontSize: '0.8rem' }}>{'}'}</div>
         </div>
 
-        {/* Bottom tag */}
-        <div className="mt-10" style={{ opacity: 0.25 }}>
-          <span style={{
-            fontFamily: 'Orbitron, monospace',
-            fontSize: '0.5rem',
-            letterSpacing: '0.3em',
-            color: 'var(--neon-red)',
-          }}>
-            ◆ EST. 2024 ◆
-          </span>
+        {/* Курсор-моргалка */}
+        <div style={{ marginTop: '12px', color: c.red, fontSize: '0.8rem', opacity: 0.5, animation: 'flicker 1.2s step-end infinite' }}>
+          █
         </div>
-
       </div>
     </div>
   );
