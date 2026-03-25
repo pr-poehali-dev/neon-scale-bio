@@ -73,10 +73,10 @@ const Index = () => {
         {bloodDrops.map((d, i) => (
           <div key={i} className="blood-drop" style={{
             left: d.left,
-            '--drip-duration': d.duration,
-            '--drip-delay': d.delay,
-            '--drip-height': d.height,
-            '--drip-start': d.start,
+            '--drop-duration': d.duration,
+            '--drop-delay': d.delay,
+            '--drop-len': d.len,
+            '--drop-start': d.start,
           } as React.CSSProperties} />
         ))}
       </div>
@@ -86,10 +86,10 @@ const Index = () => {
         {bloodDrops.map((d, i) => (
           <div key={i} className="blood-drop" style={{
             left: d.left,
-            '--drip-duration': d.duration,
-            '--drip-delay': `calc(${d.delay} + 0.7s)`,
-            '--drip-height': d.height,
-            '--drip-start': d.start,
+            '--drop-duration': d.duration,
+            '--drop-delay': `calc(${d.delay} + 0.9s)`,
+            '--drop-len': d.len,
+            '--drop-start': d.start,
           } as React.CSSProperties} />
         ))}
       </div>
